@@ -1,0 +1,2 @@
+class HumanDrafter < Drafter
+end
