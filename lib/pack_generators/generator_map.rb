@@ -1,12 +1,14 @@
 require_relative 'default_pack_generator'
 require_relative 'znr_pack_generator'
 
-class GeneratorMap
-  MAP = {
-      'znr' => ZNRPackGenerator
-  }
+module PackGenerators
+  class GeneratorMap
+    MAP = {
+        'znr' => ZnrPackGenerator
+    }
 
-  def self.generator(set:)
-    (MAP[set] || DefaultPackGenerator).new
+    def self.generator(set:)
+      (MAP[set] || DefaultPackGenerator).new
+    end
   end
 end

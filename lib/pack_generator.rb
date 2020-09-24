@@ -10,6 +10,6 @@ class PackGenerator
   def generate(set:)
     raise SetNotFound.new(set) if Card.where(set: set).empty?
 
-    GeneratorMap.generator(set: set).generate(set: set)
+    PackGenerators::GeneratorMap.generator(set: set).generate(set: set)
   end
 end

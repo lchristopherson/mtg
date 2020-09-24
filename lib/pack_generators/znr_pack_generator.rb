@@ -1,5 +1,7 @@
-class ZNRPackGenerator
-  def generate(_)
-    Pack.new
+module PackGenerators
+  class ZnrPackGenerator
+    def generate(_)
+      Pack.new
+    end
   end
 end
