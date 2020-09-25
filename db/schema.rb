@@ -17,12 +17,12 @@ ActiveRecord::Schema.define(version: 2020_09_19_190020) do
 
   create_table "cards", force: :cascade do |t|
     t.string "set"
+    t.string "category"
     t.string "rarity"
     t.json "data"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["rarity"], name: "index_cards_on_rarity"
-    t.index ["set"], name: "index_cards_on_set"
+    t.index ["set", "category", "rarity"], name: "index_cards_on_set_and_category_and_rarity"
   end
 
   create_table "cards_decks", id: false, force: :cascade do |t|
