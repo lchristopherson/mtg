@@ -37,6 +37,7 @@ class Card < ApplicationRecord
     {
         id: self.data['id'],
         type: 'normal',
+        cmc: self.data['cmc'],
         image_uris: self.data['image_uris']
     }
   end
@@ -45,6 +46,7 @@ class Card < ApplicationRecord
     {
         id: self.data['id'],
         type: 'mdfc',
+        cmc: self.data['cmc'],
         image_uris: [
             self.data['card_faces'][0]['image_uris'],
             self.data['card_faces'][1]['image_uris']
