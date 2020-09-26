@@ -28,7 +28,7 @@ Rails.application.routes.draw do
 
   resources :drafters
 
-  resources :sets
+  resources :sets, param: :code
 
   mount Sidekiq::Web => '/sidekiq'
 end
