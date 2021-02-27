@@ -22,7 +22,7 @@ module PackGenerators
 
       selected.push(*cards_for(rarity: CardConstants::UNCOMMON, count: 3))
       selected.push(*cards_for(rarity: CardConstants::COMMON, count: 10))
-      selected.push(Card.where(id: SNOW_LAND_IDS[prng.rand(SNOW_LAND_IDS.count)]))
+      selected.push(Card.find(SNOW_LAND_IDS[prng.rand(SNOW_LAND_IDS.count)]))
 
       Pack.new(cards: selected)
     end
