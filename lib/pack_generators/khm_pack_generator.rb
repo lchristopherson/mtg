@@ -31,7 +31,7 @@ module PackGenerators
 
     private
 
-    def cards_for(set: 'znr', category: CardConstants::NORMAL, rarity: nil, count: 1)
+    def cards_for(set: 'khm', category: CardConstants::NORMAL, rarity: nil, count: 1)
       cards = if rarity.nil?
         Card.where(set: set, category: category).shuffle.first(count)
       else
