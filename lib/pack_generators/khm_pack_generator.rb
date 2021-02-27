@@ -1,7 +1,5 @@
 require_relative '../card_constants'
 
-require 'random'
-
 module PackGenerators
   class KhmPackGenerator
     SNOW_LAND_IDS = [
