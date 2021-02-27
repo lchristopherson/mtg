@@ -86,7 +86,8 @@ class DraftsController < ApplicationController
         state: 'QUEUE',
         data: {
             name: draft_params[:name],
-            sets: draft_params[:sets]
+            sets: %w(khm khm khm)
+            #sets: draft_params[:sets]
         }
     }
 
