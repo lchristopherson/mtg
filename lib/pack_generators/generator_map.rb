@@ -4,7 +4,8 @@ require_relative 'znr_pack_generator'
 module PackGenerators
   class GeneratorMap
     MAP = {
-        'znr' => ZnrPackGenerator
+        'znr' => ZnrPackGenerator,
+        'khm' => KhmPackGenerator,
     }
 
     def self.generator(set:)
