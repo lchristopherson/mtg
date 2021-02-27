@@ -11,12 +11,12 @@ class DecksController < ApplicationController
   def show
     respond_to do |format|
       # TODO allow if admin
-      if @deck.user != user
-        render json: { error: 'Cannot view deck owner by another user' }, status: :forbidden
-      else
+      #if @deck.user != user
+      #  render json: { error: 'Cannot view deck owner by another user' }, status: :forbidden
+      #else
         format.json { render json: @deck.to_json }
         format.text { render plain: @deck.to_text }
-      end
+      #end
     end
   end
 
