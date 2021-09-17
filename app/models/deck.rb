@@ -27,7 +27,7 @@ class Deck < ApplicationRecord
   def format_name(card)
     # TODO: put this somewhere better
     if card.set == 'znr' || card.set == 'khm'
-        if card.category == CardConstants::MDFC
+      if card.category == CardConstants::MDFC
         return card.data['name'].split('//').first.strip
       end
     end

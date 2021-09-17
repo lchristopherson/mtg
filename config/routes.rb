@@ -1,6 +1,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  resources :cubes
   resources :decks do
     collection do
       get :current

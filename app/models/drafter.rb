@@ -10,11 +10,11 @@ class Drafter < ApplicationRecord
   end
 
   def next_pack
-    all = ordered_packs
-    return nil if all.empty?
-    return nil unless all.first.matches(self.expected_pack)
+    packs = self.reload.packs.select { |pack| pack.matches(self.expected_pack) }
 
-    all.first
+    return nil unless packs.count == 1
+
+    packs.first
   end
 
   def next_drafter(pack)
@@ -40,13 +40,13 @@ class Drafter < ApplicationRecord
 
       handle_empty_pack(pack)
     else
-      # Pass the pack
-      pack.update!(drafter: next_drafter(pack))
-
       update!(expected_pack: {
           pack: pack.number,
           cards: pack.cards.count
       })
+
+      # Pass the pack
+      pack.update!(drafter: next_drafter(pack))
     end
   end
 
@@ -67,16 +67,10 @@ class Drafter < ApplicationRecord
     })
 
     # Generate pack for next drafter
-    GeneratePackJob.perform_later(next_drafter(pack).id, pack.opposite_direction)
+    # GeneratePackJob.perform_later(next_drafter(pack).id, pack.opposite_direction)
   end
 
   def done?
     self.state == 'DONE'
-  end
-
-  private
-
-  def ordered_packs
-    self.reload.packs.sort { |a, b| [a.number, 15 - a.cards.count] <=> [b.number, 15 - b.cards.count] }
   end
 end

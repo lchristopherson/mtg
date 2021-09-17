@@ -84,10 +84,16 @@ class DraftsController < ApplicationController
     params = {
         owner: user,
         state: 'QUEUE',
+        # data: {
+        #     type: 'normal',
+        #     name: draft_params[:name],
+        #     sets: draft_params[:sets],
+        # }
+
         data: {
+            type: 'cube',
             name: draft_params[:name],
-            sets: %w(khm khm khm)
-            #sets: draft_params[:sets]
+            cube: 'Fixed Vintage'
         }
     }
 

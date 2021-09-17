@@ -10,19 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_26_000839) do
+ActiveRecord::Schema.define(version: 2021_03_03_164134) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "cards", force: :cascade do |t|
+    t.string "name"
     t.string "set"
     t.string "category"
     t.string "rarity"
     t.json "data"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["name", "set"], name: "index_cards_on_name_and_set", unique: true
     t.index ["set", "category", "rarity"], name: "index_cards_on_set_and_category_and_rarity"
+  end
+
+  create_table "cards_cubes", id: false, force: :cascade do |t|
+    t.bigint "cube_id", null: false
+    t.bigint "card_id", null: false
+    t.index ["cube_id", "card_id"], name: "index_cards_cubes_on_cube_id_and_card_id"
   end
 
   create_table "cards_decks", id: false, force: :cascade do |t|
@@ -35,6 +43,13 @@ ActiveRecord::Schema.define(version: 2020_09_26_000839) do
     t.bigint "pack_id", null: false
     t.bigint "card_id", null: false
     t.index ["pack_id", "card_id"], name: "index_cards_packs_on_pack_id_and_card_id"
+  end
+
+  create_table "cubes", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_cubes_on_name", unique: true
   end
 
   create_table "decks", force: :cascade do |t|

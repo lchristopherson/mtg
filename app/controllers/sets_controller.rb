@@ -15,7 +15,9 @@ class SetsController < ApplicationController
 
   # POST /sets
   def create
-    SetLoader.new.load(set_params[:code])
+    cards = SetLoader.new.load_set(set_params[:code])
+
+    Card.create(cards)
 
     MtgSet.create(name: set_params[:name], code: set_params[:code])
 
