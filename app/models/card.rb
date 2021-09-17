@@ -3,9 +3,11 @@ class Card < ApplicationRecord
 
   RARITY_ORDER = {
       CardConstants::MYTHIC => 0,
-      CardConstants::RARE => 1,
-      CardConstants::UNCOMMON => 2,
-      CardConstants::COMMON => 3
+      CardConstants::SPECIAL => 1,
+      CardConstants::BONUS => 2,
+      CardConstants::RARE => 3,
+      CardConstants::UNCOMMON => 4,
+      CardConstants::COMMON => 5
   }
 
   CATEGORY_ORDER = {
@@ -18,7 +20,7 @@ class Card < ApplicationRecord
     case self.data['layout']
     when 'normal'
       parse_normal
-    when 'modal_dfc'
+    when 'modal_dfc', 'transform'
       parse_mdfc
     else
       puts "Parsing layout: #{self.data['layout']} as 'normal'"

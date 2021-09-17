@@ -37,10 +37,7 @@ class StartDraftJob < ApplicationJob
       )
     end
 
-    # Do this inline?
-    shuffled.each do |d|
-      GeneratePackJob.perform_later(d.id, 'LEFT')
-    end
+    DraftInitializer.new.perform(shuffled, draft)
 
     # Start processing bots
     ProcessBotsJob.perform_later(draft_id)
