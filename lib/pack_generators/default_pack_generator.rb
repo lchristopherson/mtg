@@ -6,13 +6,13 @@ module PackGenerators
       selected = []
 
       if random.rand(8) == 7 # add mythic
-        selected.push(cards.where(rarity: 'mythic').shuffle.first)
+        selected.push(cards.where(rarity: CardConstants::MYTHIC).shuffle.first)
       else
-        selected.push(cards.where(rarity: 'rare').shuffle.first)
+        selected.push(cards.where(rarity: CardConstants::RARE).shuffle.first)
       end
 
-      selected.push(*cards.where(rarity: 'uncommon').shuffle.first(3))
-      selected.push(*cards.where(rarity: 'common').shuffle.first(11))
+      selected.push(*cards.where(rarity: CardConstants::UNCOMMON).shuffle.first(3))
+      selected.push(*cards.where(rarity: CardConstants::COMMON).shuffle.first(11))
 
       # TODO add land
 
