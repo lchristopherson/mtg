@@ -3,7 +3,7 @@ class DraftInitializer
     case draft.data['type']
     when 'normal'
       drafters.each do |d|
-        GeneratePackJob.perform_later(d.id, 'LEFT')
+        GeneratePackJob.new.perform(d.id, 'LEFT')
       end
     when 'cube'
       CubeGenerators::DefaultGenerator.new.generate(drafters, draft)

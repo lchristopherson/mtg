@@ -12,7 +12,7 @@ module PackGenerators
       end
 
       selected.push(*cards.where(rarity: CardConstants::UNCOMMON).shuffle.first(3))
-      selected.push(*cards.where(rarity: CardConstants::COMMON).shuffle.first(11))
+      selected.push(*cards.where(rarity: CardConstants::COMMON).shuffle.first(10))
 
       # TODO add land
 

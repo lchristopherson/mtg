@@ -63,7 +63,7 @@ class Drafter < ApplicationRecord
     # Update drafter's expected next pack
     update!(expected_pack: {
         pack: pack.number + 1,
-        cards: 15
+        cards: SetConstants::CARDS_PER_PACK[self.draft[:data]['sets'][pack.number + 1]]
     })
 
     # Generate pack for next drafter

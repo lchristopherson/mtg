@@ -30,7 +30,7 @@ class StartDraftJob < ApplicationJob
           right: shuffled[max_idx],
           expected_pack: {
               pack: 0,
-              cards: 15
+              cards: SetConstants::CARDS_PER_PACK[draft[:data]['sets'][0]]
           },
           state: 'DRAFT',
           deck: deck
