@@ -8,7 +8,7 @@ class PackGenerator
   end
 
   def generate(set:)
-    raise SetNotFound.new(set) if Card.where(set: set).empty?
+    raise SetNotFound.new(set) unless MtgSet.find_by_code(set)
 
     PackGenerators::GeneratorMap.generator(set: set).generate(set: set)
   end

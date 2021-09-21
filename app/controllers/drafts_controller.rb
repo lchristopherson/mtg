@@ -90,10 +90,16 @@ class DraftsController < ApplicationController
         #     sets: draft_params[:sets],
         # }
 
+        # data: {
+        #     type: 'cube',
+        #     name: draft_params[:name],
+        #     cube: 'Fixed Vintage'
+        # }
+
         data: {
-            type: 'cube',
+            type: 'normal',
             name: draft_params[:name],
-            cube: 'Fixed Vintage'
+            sets: 'mid'
         }
     }
 
