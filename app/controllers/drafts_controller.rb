@@ -99,7 +99,7 @@ class DraftsController < ApplicationController
         data: {
             type: 'normal',
             name: draft_params[:name],
-            sets: 'mid'
+            sets: ['mid', 'mid', 'mid']
         }
     }
 
