@@ -1,7 +1,7 @@
 class CleanupDraftJob < ApplicationJob
   queue_as :default
 
-  def perform(draft_id)
+  def perform(draft_id, full: false)
     draft = Draft.find(draft_id)
 
     draft.drafters.each do |drafter|
@@ -13,9 +13,12 @@ class CleanupDraftJob < ApplicationJob
         end
 
         drafter.deck.delete
+        drafter.delete
+      elsif full
+        drafter.delete
       end
-
-      drafter.delete
     end
+
+    draft.delete if full
   end
 end
