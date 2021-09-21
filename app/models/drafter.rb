@@ -67,7 +67,7 @@ class Drafter < ApplicationRecord
     })
 
     # Generate pack for next drafter
-    # GeneratePackJob.perform_later(next_drafter(pack).id, pack.opposite_direction)
+    GeneratePackJob.perform_later(next_drafter(pack).id, pack.opposite_direction)
   end
 
   def done?
